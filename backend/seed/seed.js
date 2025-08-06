@@ -9,28 +9,28 @@ const seed = async () => {
     await Project.deleteMany();
 
     const client = await User.create({
-      name: 'Client',
+      name: 'Клиент',
       email: 'client@example.com',
       password: '123456',
       role: 'client',
     });
 
     const student = await User.create({
-      name: 'Student',
+      name: 'Студент',
       email: 'student@example.com',
       password: '123456',
       role: 'student',
     });
 
     await Project.create({
-      title: 'Demo Project',
-      description: 'Sample project for seeding',
+      title: 'Демонстрационный проект',
+      description: 'Пример проекта для заполнения',
       category: 'web',
       budget: 100,
       client: client._id,
     });
 
-    console.log('Seed complete');
+    console.log('Инициализация завершена');
     process.exit();
   } catch (err) {
     console.error(err);

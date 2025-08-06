@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const dummyProjects = [
-  { id: 1, title: 'Website Development', category: 'web' },
-  { id: 2, title: 'Logo Design', category: 'design' },
+  { id: 1, title: 'Разработка сайта', category: 'web' },
+  { id: 2, title: 'Создание логотипа', category: 'design' },
 ];
 
 export default function Projects() {
   return (
     <div className="p-4">
-      <h1 className="text-2xl mb-4">Projects</h1>
+      <h1 className="text-2xl mb-4">Проекты</h1>
       <ul className="space-y-2">
         {dummyProjects.map((p) => (
           <li key={p.id} className="border p-2">

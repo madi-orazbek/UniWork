@@ -11,10 +11,11 @@ function App() {
   return (
     <Router>
       <nav className="p-4 bg-gray-800 text-white flex gap-4">
-        <Link to="/">Projects</Link>
-        <Link to="/my-projects">My Projects</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/">Проекты</Link>
+        <Link to="/my-projects">Мои проекты</Link>
+        <Link to="/profile">Профиль</Link>
+        <Link to="/login">Вход</Link>
+        <Link to="/register">Регистрация</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Projects />} />
