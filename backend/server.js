@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-// Маршруты
+// Маршруты API
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/projects', projectRoutes);
@@ -30,6 +31,14 @@ app.use('/api/applications', applicationRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/payments', paymentRoutes);
+
+// Статические файлы фронтенда
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Отдача index.html для остальных маршрутов
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 
 const PORT = process.env.PORT || 5000;
 
