@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const connectDB = require('./config/db');
 
-// Route imports
+// Импорт маршрутов
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const projectRoutes = require('./routes/projectRoutes');
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-// Routes
+// Маршруты
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/projects', projectRoutes);
@@ -34,7 +34,7 @@ app.use('/api/payments', paymentRoutes);
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
 }).catch(err => {
-  console.error('Failed to connect to DB', err);
+  console.error('Не удалось подключиться к базе данных', err);
 });

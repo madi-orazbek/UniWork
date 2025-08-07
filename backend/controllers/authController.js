@@ -5,7 +5,7 @@ const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
     const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ message: 'User already exists' });
+    if (userExists) return res.status(400).json({ message: 'Пользователь уже существует' });
     const user = await User.create({ name, email, password, role });
     res.status(201).json({ token: generateToken(user), user });
   } catch (err) {
@@ -18,7 +18,7 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user || !(await user.matchPassword(password))) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Неверные учетные данные' });
     }
     res.json({ token: generateToken(user), user });
   } catch (err) {
